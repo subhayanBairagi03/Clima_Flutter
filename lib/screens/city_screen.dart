@@ -1,5 +1,6 @@
 import 'package:clima_flutter/utilities/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:clima_flutter/utilities/constants.dart';
 
 class CityScreen extends StatefulWidget {
   @override
@@ -7,13 +8,14 @@ class CityScreen extends StatefulWidget {
 }
 
 class _CityScreenState extends State<CityScreen> {
+  var value;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/city_background.jpg'),
+            image: AssetImage('images/city_background2.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -24,20 +26,32 @@ class _CityScreenState extends State<CityScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: FlatButton(
-                  onPressed: () {},
-                  child: Icon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
                     Icons.arrow_back_ios,
-                    size: 50.0,
+                    size: 30.0,
                   ),
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
-                child: null,
+                child: TextField(
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                  decoration: ktextdecoration,
+                  onChanged: (val) {
+                    value = val;
+                  },
+                ),
               ),
               FlatButton(
-                onPressed: () {},
-                child: Text(
+                onPressed: () {
+                  Navigator.pop(context, value);
+                },
+                child: const Text(
                   'Get Weather',
                   style: kButtonTextStyle,
                 ),
